@@ -1,0 +1,155 @@
+{% extends './_base.html' %}
+{% block content %}
+
+
+    {# container  #}
+    <div class="justify-center">
+
+        {# title area #}
+        <div class="flex justify-center" id="title-area">
+            <h1 class="text-6xl text-blue-500 font-bold">Linked</h1>
+            <img src="../static/image/linkedin_logo.png" alt="linkedin logo" class="ml-1"
+                 style="height: 60px; width: auto; "/>
+            <h1 class="text-6xl font-bold ml-4 text-gray-600">Scraper</h1>
+        </div>
+
+        {#  input area   #}
+        <div class="mt-14 flex justify-center" id="input-area">
+
+            <div style="width: 100%" class="flex justify-center">
+
+                {# selectbox  #}
+                <label>
+                    <select name="select" id="select" class="border-2 border-blue-500 p-2 rounded-lg mr-1"
+                            style="width: 110px;">
+                        <option value="person">Person</option>
+                        <option value="company">Company</option>
+                    </select>
+                </label>
+                <label>
+                    <input type="text" name="url" placeholder="Enter linkedin profile url" id="linkedin-url"
+                           class="border-2 border-blue-500 p-2 rounded-lg" style="width: 500px;"/>
+                </label>
+
+                {#  scrape button  #}
+                <button type="submit"
+                        class="ml-1 bg-blue-500 text-white p-2 rounded-lg font-semibold text-center text-base hover:bg-blue-600 focus:ring-blue-500 focus:ring-offset-blue-200 focus:outline-none"
+                        id="scrape-btn" style="padding: 0 20px; width: 100px; height: 100%; display: inline">
+                    Scrape
+                </button>
+
+                {#  processing button  #}
+                <button type="button"
+                        class="flex justify-center items-center bg-blue-400 text-white transition ease-in duration-200 text-center text-base font-semibold focus:outline-none rounded-lg ml-1"
+                        style="display: none; height: 100%; width: 130px; vertical-align: bottom;" id="processing-btn"
+                        disabled>
+                    <svg width="20" height="20" fill="currentColor" class="mr-2 animate-spin"
+                         viewBox="0 0 1792 1792"
+                         xmlns="http://www.w3.org/2000/svg">
+                        <path d="M526 1394q0 53-37.5 90.5t-90.5 37.5q-52 0-90-38t-38-90q0-53 37.5-90.5t90.5-37.5 90.5 37.5 37.5 90.5zm498 206q0 53-37.5 90.5t-90.5 37.5-90.5-37.5-37.5-90.5 37.5-90.5 90.5-37.5 90.5 37.5 37.5 90.5zm-704-704q0 53-37.5 90.5t-90.5 37.5-90.5-37.5-37.5-90.5 37.5-90.5 90.5-37.5 90.5 37.5 37.5 90.5zm1202 498q0 52-38 90t-90 38q-53 0-90.5-37.5t-37.5-90.5 37.5-90.5 90.5-37.5 90.5 37.5 37.5 90.5zm-964-996q0 66-47 113t-113 47-113-47-47-113 47-113 113-47 113 47 47 113zm1170 498q0 53-37.5 90.5t-90.5 37.5-90.5-37.5-37.5-90.5 37.5-90.5 90.5-37.5 90.5 37.5 37.5 90.5zm-640-704q0 80-56 136t-136 56-136-56-56-136 56-136 136-56 136 56 56 136zm530 206q0 93-66 158.5t-158 65.5q-93 0-158.5-65.5t-65.5-158.5q0-92 65.5-158t158.5-66q92 0 158 66t66 158z">
+                        </path>
+                    </svg>
+                    Processing
+                </button>
+            </div>
+        </div> <!-- end of input area -->
+
+        {#  output area   #}
+        <div class="mt-20 flex justify-center" id="output-area">
+            <div class="border-2 border-blue-100 p-4 rounded-lg"
+                 style="width: 700px; max-height: 500px; overflow: auto;">
+
+                <a id="file-down-btn"
+                   class="underline text-sm text-blue-500 ml-auto float-end disabled:text-slate-500 align-top relative"
+                   style="top:-0.7rem;">Download</a>
+
+                <h1 class="text-2xl font-bold text-gray-300 ">Scraped Data</h1>
+                <div class="mt-4">
+                    <pre id="json" class="text-gray-300 whitespace-pre-wrap"></pre>
+                </div>
+            </div>
+        </div>
+
+    </div> <!-- end of container -->
+
+    <script>
+        const scapeBtn = document.getElementById("scrape-btn");
+        const processingBtn = document.getElementById("processing-btn");
+        const jsonResult = document.getElementById("json");
+        const linkedinUrl = document.getElementById("linkedin-url");
+
+        // select box
+        const select = document.getElementById("select");
+        select.addEventListener("change", function () {
+            console.log("select", select.value);
+        });
+
+        console.log("jsonResult", jsonResult);
+
+        {# scrape btn click #}
+        document.getElementById("scrape-btn").addEventListener("click", function () {
+            const url = linkedinUrl.value;
+            const selectValue = select.value;
+
+            console.log("url", url);
+            console.log("selectValue", selectValue);
+
+            if (url) {
+                scapeBtn.style.display = "none";
+                processingBtn.style.display = "inline-flex";
+                fetch("/scrape", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({url: url, select: selectValue}),
+                })
+                    .then((response) => {
+                        if (!response.ok) {
+                            throw new Error(response.statusText);
+                        }
+                        return response.json()
+                    })
+                    .then((data) => {
+                        scapeBtn.style.display = "inline-block";
+                        processingBtn.style.display = "none";
+                        jsonResult.textContent = JSON.stringify(data, undefined, 2);
+
+                        {# text-gray-300 to text-gray-600 #}
+                        jsonResult.classList.remove("text-gray-300");
+                        jsonResult.classList.add("text-gray-600");
+                    })
+                    .catch((error) => {
+                        scapeBtn.style.display = "inline-block";
+                        processingBtn.style.display = "none";
+                        alert(error);
+                    });
+            } else {
+                alert("Please enter linkedin profile url");
+            }
+        });
+
+        const data = {
+            "data": {
+                "x": "1",
+                "y": "1",
+                "url": "http://url.com"
+            },
+            "event": "start",
+            "show": 1,
+            "id": 50
+        };
+        jsonResult.textContent = JSON.stringify(data, undefined, 4);
+
+        {# down btn click #}
+        const dlAnchorElem = document.getElementById('file-down-btn').addEventListener("click", function () {
+            const download_data = JSON.parse(jsonResult.textContent);
+            console.log("download_data", download_data);
+            const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(download_data, null, 2));
+            this.setAttribute("href", dataStr);
+            this.setAttribute("download", "output.json");
+        });
+
+    </script>
+
+{% endblock content %}

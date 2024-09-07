@@ -1,0 +1,22 @@
+<!-- template/_base.html -->
+{% load compress %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    {% compress css %}
+        <link rel="stylesheet" href="{% static 'src/output.css' %}">
+    {% endcompress %}
+    {#    <link href="../static/src/output.src" rel="stylesheet">#}
+    <title>Django_Scraper</title>
+</head>
+<body>
+<div class="container mx-auto mt-20">
+    {% block content %}
+    {% endblock content %}
+</div>
+</body>
+</html>
