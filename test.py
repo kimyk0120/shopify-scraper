@@ -1,12 +1,9 @@
-import os
-import sys
 import csv
 import json
-import time
-import urllib.request
-from urllib.error import HTTPError
-from optparse import OptionParser
+import os
 import ssl
+import urllib.request
+
 from bs4 import BeautifulSoup
 
 ssl_context = ssl.create_default_context()
@@ -16,7 +13,7 @@ ssl_context.verify_mode = ssl.CERT_NONE
 USER_AGENT = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.47 Safari/537.36'
 
 end_page = 21  # 페이지가 어디까지 인지  확인 필요
-csv_file_path = 'products_add_image_url.csv'
+csv_file_path = 'test/products_add_image_url.csv'
 
 # Check if the file exists
 file_exists = os.path.isfile(csv_file_path)
@@ -68,3 +65,26 @@ with open(csv_file_path, 'a', newline='') as csv_file:
             csv_writer.writerow([title, description, specs, price, image_urls])
 
 print("end of script")
+
+
+
+if __name__ == '__main__':
+    pass
+    # parser = OptionParser()
+    # parser.add_option("--list-collections", dest="list_collections",
+    #                   action="store_true",
+    #                   help="List collections in the site")
+    # parser.add_option("--collections", "-c", dest="collections",
+    #                   default="",
+    #                   help="Download products only from the given collections (comma separated)")
+    # (options, args) = parser.parse_args()
+    # if len(args) > 0:
+    #     url = fix_url(args[0])
+    #     if options.list_collections:
+    #         for col in get_page_collections(url):
+    #             print(col['handle'])
+    #     else:
+    #         collections = []
+    #         if options.collections:
+    #             collections = options.collections.split(',')
+    #         extract_products(url, 'products_all_20240907.csv', collections)
