@@ -13,7 +13,7 @@ ssl_context.verify_mode = ssl.CERT_NONE
 USER_AGENT = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.47 Safari/537.36'
 
 end_page = 21  # 페이지가 어디까지 인지  확인 필요
-csv_file_path = 'test/products_add_image_url.csv'
+csv_file_path = '../etc/products_add_image_url.csv'
 
 # Check if the file exists
 file_exists = os.path.isfile(csv_file_path)
@@ -60,7 +60,7 @@ with open(csv_file_path, 'a', newline='') as csv_file:
             images = product['images']
             image_urls = []
             for image in images:
-                image_urls.append(image['src'])
+                image_urls.append(image['tests'])
 
             csv_writer.writerow([title, description, specs, price, image_urls])
 

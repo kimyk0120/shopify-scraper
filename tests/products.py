@@ -1,7 +1,7 @@
 import json
 import ssl
 import urllib.request
-import utils.common as common_utils
+import shopify_app.utils.url_utils as url_utils
 
 ssl_context = ssl.create_default_context()
 ssl_context.check_hostname = False
@@ -12,7 +12,7 @@ USER_AGENT = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_3) AppleWebKit/537.36 
 # https://www.chrononation.com/collections.json?page=1&&limit=3
 
 base_url = "www.chrononation.com"
-base_url = common_utils.validate_url(base_url)
+base_url = url_utils.validate_url(base_url)
 
 def get_all_products_by_req(url):
     page = 1
