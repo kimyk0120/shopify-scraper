@@ -13,7 +13,7 @@ ssl_context.verify_mode = ssl.CERT_NONE
 USER_AGENT = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.47 Safari/537.36'
 
 end_page = 21  # 페이지가 어디까지 인지  확인 필요
-csv_file_path = '../output/belortimelegacy_products_20240908.csv'
+csv_file_path = '../output/belortimelegacy_products_20240908_1.csv'
 
 # Check if the file exists
 file_exists = os.path.isfile(csv_file_path)
@@ -26,7 +26,7 @@ with open(csv_file_path, 'a', newline='') as csv_file:
         csv_writer.writerow(['Title', 'Description', 'Specs', 'Price' , "Images"])
 
     for page in range(1, end_page+1):
-        url = "https://www.belortimelegacy.com/collections/shop/products.json?page={}".format(page)
+        url = "https://www.belortimelegacy.com/products.json?limit=250&&page={}".format(page)
 
         req = urllib.request.Request(
             url,
@@ -44,15 +44,25 @@ with open(csv_file_path, 'a', newline='') as csv_file:
             description_body = product['body_html']
 
             soup = BeautifulSoup(description_body, 'html.parser')
+
             description = soup.find("p").get_text()
+            description2_p = soup.find_all("p")[1].get_text()
+            description = description + description2_p
             description = description.replace('\n', '').replace('\t', '')
 
             specs_tr = soup.find_all("tr")
             spec_json = {}
             for spec in specs_tr:
-                key = spec.find_all("td")[0].get_text()
-                value = spec.find_all("td")[1].get_text()
-                spec_json[key] = value
+                th_els = spec.find_all("th")
+                td_els = spec.find_all("td")
+                if len(th_els) > 0:
+                    key = th_els[0].get_text()
+                    value = th_els[1].get_text()
+                    spec_json[key] = value
+                else:
+                    key = td_els[0].get_text()
+                    value = td_els[1].get_text()
+                    spec_json[key] = value
 
             specs = json.dumps(spec_json)
             price = product['variants'][0]['price']
