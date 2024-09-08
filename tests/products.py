@@ -14,6 +14,7 @@ USER_AGENT = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_3) AppleWebKit/537.36 
 base_url = "www.chrononation.com"
 base_url = url_utils.validate_url(base_url)
 
+
 def get_all_products_by_req(url):
     page = 1
     collections = []
@@ -29,17 +30,14 @@ def get_all_products_by_req(url):
         data = urllib.request.urlopen(req, context=ssl_context).read()
 
         products_json = json.loads(data.decode())['products']
-        collections += products_json
         if not products_json:
             break
+        collections += products_json
         page += 1
 
     return collections
 
+
 products = get_all_products_by_req(base_url)
 
-
 print("end of script")
-
-
-

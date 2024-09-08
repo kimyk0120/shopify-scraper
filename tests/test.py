@@ -23,9 +23,9 @@ with open(csv_file_path, 'a', newline='') as csv_file:
 
     # If the file does not exist, write the header
     if not file_exists:
-        csv_writer.writerow(['Title', 'Description', 'Specs', 'Price' , "Images"])
+        csv_writer.writerow(['Title', 'Description', 'Specs', 'Price', "Images"])
 
-    for page in range(1, end_page+1):
+    for page in range(1, end_page + 1):
         url = "https://www.belortimelegacy.com/collections/shop/products.json?page={}".format(page)
 
         req = urllib.request.Request(
@@ -65,8 +65,6 @@ with open(csv_file_path, 'a', newline='') as csv_file:
             csv_writer.writerow([title, description, specs, price, image_urls])
 
 print("end of script")
-
-
 
 if __name__ == '__main__':
     pass
