@@ -19,20 +19,20 @@
             <div style="width: 100%" class="flex justify-center">
 
                 <label>
-                    <input type="text" name="url" placeholder="Enter linkedin profile url" id="linkedin-url"
-                           class="border-2 border-blue-500 p-2 rounded-lg" style="width: 500px;"/>
+                    <input type="text" name="url" placeholder="Enter Shopify URL" id="shopify-url"
+                           class="border-2 border-green-500 p-2 rounded-lg" style="width: 500px;"/>
                 </label>
 
                 {#  scrape button  #}
                 <button type="submit"
-                        class="ml-1 bg-blue-500 text-white p-2 rounded-lg font-semibold text-center text-base hover:bg-blue-600 focus:ring-blue-500 focus:ring-offset-blue-200 focus:outline-none"
+                        class="ml-1 bg-green-500 text-white p-2 rounded-lg font-semibold text-center text-base hover:bg-green-600 focus:ring-green-500 focus:ring-offset-green-200 focus:outline-none"
                         id="scrape-btn" style="padding: 0 20px; width: 100px; height: 100%; display: inline">
                     Scrape
                 </button>
 
                 {#  processing button  #}
                 <button type="button"
-                        class="flex justify-center items-center bg-blue-400 text-white transition ease-in duration-200 text-center text-base font-semibold focus:outline-none rounded-lg ml-1"
+                        class="flex justify-center items-center bg-green-400 text-white transition ease-in duration-200 text-center text-base font-semibold focus:outline-none rounded-lg ml-1"
                         style="display: none; height: 100%; width: 130px; vertical-align: bottom;" id="processing-btn"
                         disabled>
                     <svg width="20" height="20" fill="currentColor" class="mr-2 animate-spin"
@@ -48,11 +48,11 @@
 
         {#  output area   #}
         <div class="mt-20 flex justify-center" id="output-area">
-            <div class="border-2 border-blue-100 p-4 rounded-lg"
+            <div class="border-2 border-green-100 p-4 rounded-lg"
                  style="width: 700px; max-height: 500px; overflow: auto;">
 
                 <a id="file-down-btn"
-                   class="underline text-sm text-blue-500 ml-auto float-end disabled:text-slate-500 align-top relative"
+                   class="underline text-sm text-green-500 ml-auto float-end disabled:text-slate-500 align-top relative"
                    style="top:-0.7rem;">Download</a>
 
                 <h1 class="text-2xl font-bold text-gray-300 ">Scraped Data</h1>
@@ -68,7 +68,7 @@
         const scapeBtn = document.getElementById("scrape-btn");
         const processingBtn = document.getElementById("processing-btn");
         const jsonResult = document.getElementById("json");
-        const linkedinUrl = document.getElementById("linkedin-url");
+        const linkedinUrl = document.getElementById("shopify-url");
 
         // select box
         const select = document.getElementById("select");
@@ -117,30 +117,30 @@
                         alert(error);
                     });
             } else {
-                alert("Please enter linkedin profile url");
+                alert("Please enter shopify url");
             }
         });
 
-        const data = {
-            "data": {
-                "x": "1",
-                "y": "1",
-                "url": "http://url.com"
-            },
-            "event": "start",
-            "show": 1,
-            "id": 50
-        };
-        jsonResult.textContent = JSON.stringify(data, undefined, 4);
+        {#const data = {#}
+        {#    "data": {#}
+        {#        "x": "1",#}
+        {#        "y": "1",#}
+        {#        "url": "http://url.com"#}
+        {#    },#}
+        {#    "event": "start",#}
+        {#    "show": 1,#}
+        {#    "id": 50#}
+        {# }; #}
+        {#jsonResult.textContent = JSON.stringify(data, undefined, 4);#}
 
         {# down btn click #}
-        const dlAnchorElem = document.getElementById('file-down-btn').addEventListener("click", function () {
-            const download_data = JSON.parse(jsonResult.textContent);
-            console.log("download_data", download_data);
-            const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(download_data, null, 2));
-            this.setAttribute("href", dataStr);
-            this.setAttribute("download", "output.json");
-        });
+        {#const dlAnchorElem = document.getElementById('file-down-btn').addEventListener("click", function () {#}
+        {#    const download_data = JSON.parse(jsonResult.textContent);#}
+        {#    console.log("download_data", download_data);#}
+        {#    const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(download_data, null, 2));#}
+        {#    this.setAttribute("href", dataStr);#}
+        {#    this.setAttribute("download", "output.json");#}
+        {# }); #}
 
     </script>
 
