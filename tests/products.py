@@ -17,7 +17,7 @@ base_url = url_utils.validate_url(base_url)
 
 def get_all_products_by_req(url):
     page = 1
-    collections = []
+    products_json_list = []
     while True:
         url = url + '/products.json?limit=250&&page={}'.format(page)
         req = urllib.request.Request(
@@ -32,12 +32,12 @@ def get_all_products_by_req(url):
         products_json = json.loads(data.decode())['products']
         if not products_json:
             break
-        collections += products_json
+        products_json_list += products_json
         page += 1
 
-    return collections
+    return products_json_list
 
 
-products = get_all_products_by_req(base_url)
+products_json_list = get_all_products_by_req(base_url)
 
 print("end of script")
