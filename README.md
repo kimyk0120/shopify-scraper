@@ -1,4 +1,4 @@
-# shopify-scraper
+# shopify-scraper (ing..)
 
 [//]: # (Simple scraper to extract all products from shopify sites)
 
@@ -16,8 +16,6 @@
 
 [//]: # (description: html 구조가 제각각이라 위의 구조같이 정형화 된 것만 파싱한다. )
 
-
-# LinkedIn  Scraper
 
 [//]: # ([![forthebadge]&#40;https://forthebadge.com/images/badges/open-source.svg&#41;]&#40;https://forthebadge.com&#41;)
 
