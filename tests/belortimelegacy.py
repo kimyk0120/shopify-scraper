@@ -18,7 +18,7 @@ csv_file_path = '../output/belortimelegacy_products_20240908_1.csv'
 # Check if the file exists
 file_exists = os.path.isfile(csv_file_path)
 
-with open(csv_file_path, 'a', newline='') as csv_file:
+with open(csv_file_path, 'a', newline='', encoding='utf-8') as csv_file:
     csv_writer = csv.writer(csv_file)
 
     # If the file does not exist, write the header
