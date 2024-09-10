@@ -16,18 +16,17 @@ This project is a web application that scrapes shopify products that provide pub
 
 <img src="./intro.png"  alt="intro"/>
 
-
+[//]: # ('Title', 'Description', 'Specs', 'Price' , "Images")
 This scraper will extract publicly available data: 
-
-**🧑‍🎨 Profile:** ......name, email, talks about, location
-
-**👨‍💼 Experiences:** ....job title, company name, company url
-
-**🗺️ Education:** ... name, period
+- Title
+- Description
+- Specs
+- Price
+- Images
 
 ---
 
-## Updated Features
+[//]: # (## Updated Features)
 
 [//]: # (2024.09.04)
 [//]: # (  - **Company Search:** You can search for a company and get all the employees' information.)
@@ -53,7 +52,7 @@ $ pip install -r requirements.txt
 $ python manage.py runserver
 ```
 
-- Tailwind Build (for development)
+- Tailwind Build (for dev)
 ```bash
 $ npx tailwindcss -i ./static/src/input.css -o ./static/src/output.css --watch
 ```
