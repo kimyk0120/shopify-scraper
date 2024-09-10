@@ -1,12 +1,5 @@
-# shopify-scraper (ing..)
+# <img src="static/image/png/shopify_glyph.png"  alt="intro" style="height: 30px; width: auto;"/>  Shopify-Scraper (ing..)
 
-[//]: # (Simple scraper to extract all products from shopify sites)
-[//]: # (  row = {'sku': sku, 'product_type': product_type,)
-[//]: # (                       'title': title, 'option_value': option_value,)
-[//]: # (                       'price': price, 'stock': stock, 'body': str&#40;product['body_html']&#41;,)
-[//]: # (                       'variant_id': product_handle + str&#40;variant['id']&#41;,)
-[//]: # (                       'product_url': product_url, 'image_src': image_src})
-[//]: # (description: html 구조가 제각각이라 위의 구조같이 정형화 된 것만 파싱한다. )
 [//]: # ([![forthebadge]&#40;https://forthebadge.com/images/badges/open-source.svg&#41;]&#40;https://forthebadge.com&#41;)
 
 [![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)](https://forthebadge.com)
@@ -16,8 +9,7 @@ This project is a web application that scrapes shopify products that provide pub
 
 <img src="./intro.png"  alt="intro"/>
 
-[//]: # ('Title', 'Description', 'Specs', 'Price' , "Images")
-This scraper will extract publicly available data: 
+This scraper will extract the following information from the shopify site:
 - Title
 - Description
 - Specs
@@ -27,9 +19,11 @@ This scraper will extract publicly available data:
 ---
 
 [//]: # (## Updated Features)
-
 [//]: # (2024.09.04)
 [//]: # (  - **Company Search:** You can search for a company and get all the employees' information.)
+
+## TODO
+- index page list view
 
 
 ## Stacks
