@@ -8,9 +8,9 @@
         {# title area #}
         <div class="flex justify-center" id="title-area">
             <h1 class="text-6xl text-green-700 font-bold">Shopify</h1>
-            <img src="../static/image/shopify_logo.png" alt="linkedin logo" class="ml-1"
-                 style="height: 60px; width: auto; "/>
-            <h1 class="text-6xl font-bold ml-4 text-gray-600">Scraper</h1>
+            <img src="../static/image/png/shopify_glyph.png" alt="linkedin logo" class="ml-1"
+                 style="height: 90px; width: auto; "/>
+            <h1 class="text-6xl font-bold ml-1 text-gray-100">Scraper</h1>
         </div>
 
         {#  input area   #}
@@ -20,7 +20,7 @@
 
                 <label>
                     <input type="text" name="url" placeholder="Enter Shopify URL" id="shopify-url"
-                           class="border-2 border-green-500 p-2 rounded-lg" style="width: 500px;"/>
+                           class="border-2 border-green-500 p-2 rounded-lg placeholder-gray-600" style="width: 500px;"/>
                 </label>
 
                 {#  scrape button  #}
@@ -55,7 +55,7 @@
                    class="underline text-sm text-green-500 ml-auto float-end disabled:text-slate-500 align-top relative"
                    style="top:-0.7rem;">Download</a>
 
-                <h1 class="text-2xl font-bold text-gray-300 ">Scraped Data</h1>
+                <h1 class="text-2xl font-bold text-gray-200 ">Scraped Data</h1>
                 <div class="mt-4">
                     <pre id="json" class="text-gray-300 whitespace-pre-wrap"></pre>
                 </div>
@@ -70,21 +70,13 @@
         const jsonResult = document.getElementById("json");
         const linkedinUrl = document.getElementById("shopify-url");
 
-        // select box
-        const select = document.getElementById("select");
-        select.addEventListener("change", function () {
-            console.log("select", select.value);
-        });
-
         console.log("jsonResult", jsonResult);
 
         {# scrape btn click #}
         document.getElementById("scrape-btn").addEventListener("click", function () {
             const url = linkedinUrl.value;
-            const selectValue = select.value;
 
             console.log("url", url);
-            console.log("selectValue", selectValue);
 
             if (url) {
                 scapeBtn.style.display = "none";
@@ -94,7 +86,7 @@
                     headers: {
                         "Content-Type": "application/json",
                     },
-                    body: JSON.stringify({url: url, select: selectValue}),
+                    body: JSON.stringify({url: url}),
                 })
                     .then((response) => {
                         if (!response.ok) {
@@ -121,26 +113,26 @@
             }
         });
 
-        {#const data = {#}
-        {#    "data": {#}
-        {#        "x": "1",#}
-        {#        "y": "1",#}
-        {#        "url": "http://url.com"#}
-        {#    },#}
-        {#    "event": "start",#}
-        {#    "show": 1,#}
-        {#    "id": 50#}
-        {# }; #}
-        {#jsonResult.textContent = JSON.stringify(data, undefined, 4);#}
+        const data = {
+            "data": {
+                "x": "1",
+                "y": "1",
+                "url": "http://url.com"
+            },
+            "event": "start",
+            "show": 1,
+            "id": 50
+         };
+        jsonResult.textContent = JSON.stringify(data, undefined, 4);
 
-        {# down btn click #}
-        {#const dlAnchorElem = document.getElementById('file-down-btn').addEventListener("click", function () {#}
-        {#    const download_data = JSON.parse(jsonResult.textContent);#}
-        {#    console.log("download_data", download_data);#}
-        {#    const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(download_data, null, 2));#}
-        {#    this.setAttribute("href", dataStr);#}
-        {#    this.setAttribute("download", "output.json");#}
-        {# }); #}
+         {#down btn click#}
+        const dlAnchorElem = document.getElementById('file-down-btn').addEventListener("click", function () {
+            const download_data = JSON.parse(jsonResult.textContent);
+            console.log("download_data", download_data);
+            const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(download_data, null, 2));
+            this.setAttribute("href", dataStr);
+            this.setAttribute("download", "output.json");
+         });
 
     </script>
 
