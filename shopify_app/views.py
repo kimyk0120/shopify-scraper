@@ -4,6 +4,7 @@ from django.http import JsonResponse
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
 
+from .utils import url_utils as url_utils
 from .scraper import products as scraper
 
 
@@ -23,6 +24,11 @@ def scrape(request):
         print("req_json_data: ", req_json_data)
 
         url = req_json_data['url']
+
+        if url.startswith("http://") or url.startswith("https://"):
+            pass
+        else:
+            url = url_utils.validate_url(url)
 
         if not url:
             return JsonResponse({"error": "Invalid request body"}, status=400)

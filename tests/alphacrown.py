@@ -81,25 +81,3 @@ with open(csv_file_path, 'a', newline='', encoding='utf-8') as csv_file:
 
 print("end of script")
 
-
-
-if __name__ == '__main__':
-    pass
-    # parser = OptionParser()
-    # parser.add_option("--list-collections", dest="list_collections",
-    #                   action="store_true",
-    #                   help="List collections in the site")
-    # parser.add_option("--collections", "-c", dest="collections",
-    #                   default="",
-    #                   help="Download products only from the given collections (comma separated)")
-    # (options, args) = parser.parse_args()
-    # if len(args) > 0:
-    #     url = fix_url(args[0])
-    #     if options.list_collections:
-    #         for col in get_page_collections(url):
-    #             print(col['handle'])
-    #     else:
-    #         collections = []
-    #         if options.collections:
-    #             collections = options.collections.split(',')
-    #         extract_products(url, 'products_all_20240907.csv', collections)
