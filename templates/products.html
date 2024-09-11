@@ -8,11 +8,14 @@
             {{ product.description }}
         </td>
         <td class="px-6 py-4">
+        {% if product.specs %}
             <ul>
+                {# if product.specs exist #}
                 {% for key, value in product.specs.items %}
                     <li>{{ key }} : {{ value }}</li>
                 {% endfor %}
             </ul>
+        {% endif %}
         </td>
         <td class="px-6 py-4">
             {{ product.price }}
