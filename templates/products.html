@@ -1,0 +1,26 @@
+{% for product in data %}
+    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+        <th scope="row"
+            class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+            {{ product.title }}
+        </th>
+        <td class="px-6 py-4">
+            {{ product.description }}
+        </td>
+        <td class="px-6 py-4">
+            <ul>
+                {% for key, value in product.specs.items %}
+                    <li>{{ key }} : {{ value }}</li>
+                {% endfor %}
+            </ul>
+        </td>
+        <td class="px-6 py-4">
+            {{ product.price }}
+        </td>
+        <td class="px-6 py-4">
+            {% for image_url in product.image_urls %}
+                <a class="font-medium text-blue-600 dark:text-blue-500 hover:underline" href="{{ image_url }}" target="_blank">{{ image_url }}</a><br>
+            {% endfor %}
+        </td>
+    </tr>
+{% endfor %}

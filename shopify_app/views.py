@@ -4,6 +4,8 @@ from django.http import JsonResponse
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
 
+from .scraper import products as scraper
+
 
 # Create your views here.
 def index(request):
@@ -22,16 +24,12 @@ def scrape(request):
 
         url = req_json_data['url']
 
-        jsonData = {"error": "Invalid request body"}
-
         if not url:
             return JsonResponse({"error": "Invalid request body"}, status=400)
 
-        # if select_val == 'company':
-        #     jsonData = core_company.scraper_from_company(url)
-        # else:
-        #     jsonData = core_person.scraper(url)
+        products_json_list = scraper.get_all_products_by_req(url)
+        jsonData = scraper.get_parse_data(products_json_list)
 
-        return JsonResponse(jsonData)
+        return render(request, 'products.html', {'data': jsonData})
     else:
         return JsonResponse({"error": "Invalid request method"}, status=400)
