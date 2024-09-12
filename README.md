@@ -1,4 +1,4 @@
-# <img src="static/image/png/shopify_glyph.png"  alt="intro" style="height: 30px; width: auto;"/>  Shopify-Scraper (ing..)
+# <img src="static/image/png/shopify_glyph.png"  alt="intro" style="height: 30px; width: auto;"/>  Shopify-Scraper 
 
 [//]: # ([![forthebadge]&#40;https://forthebadge.com/images/badges/open-source.svg&#41;]&#40;https://forthebadge.com&#41;)
 
