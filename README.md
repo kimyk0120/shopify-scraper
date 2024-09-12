@@ -22,10 +22,6 @@ This scraper will extract the following information from the shopify site:
 [//]: # (2024.09.04)
 [//]: # (  - **Company Search:** You can search for a company and get all the employees' information.)
 
-## TODO
-- index page list view
-
-
 ## Stacks
 ```angular2html
 Django 5.0.7
