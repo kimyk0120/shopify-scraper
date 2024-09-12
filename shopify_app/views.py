@@ -25,13 +25,15 @@ def scrape(request):
 
         url = req_json_data['url']
 
+        if url:
+            url = url.strip()
+        else:
+            return JsonResponse({"error": "url is required"}, status=400)
+
         if url.startswith("http://") or url.startswith("https://"):
             pass
         else:
             url = url_utils.validate_url(url)
-
-        if not url:
-            return JsonResponse({"error": "Invalid request body"}, status=400)
 
         products_json_list = scraper.get_all_products_by_req(url)
         jsonData = scraper.get_parse_data(products_json_list)

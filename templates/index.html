@@ -46,20 +46,20 @@
             </div>
         </div> <!-- end of input area -->
 
+
         {#  output area   #}
-        <div class="mt-20 flex justify-center" id="output-area">
-            {#            <div class="border-2 border-green-100 p-4 rounded-lg" style="width: 100%; max-height: 58vh; overflow: auto;">#}
+        <div class="mt-20 justify-center" id="output-area">
 
-            {#                <a id="file-down-btn"#}
-            {#                   class="underline text-sm text-green-500 ml-auto float-end disabled:text-slate-500 align-top relative"#}
-            {#                   style="top:-0.7rem;">Download</a>#}
+            <div class="block">
+                <a id="file-down-btn" style="top:-5px;"
+                   class="underline text-sm text-green-500 ml-auto disabled:text-slate-500 float-end relative"
+                >Download</a>
+            </div>
 
-            {#                <h1 class="text-2xl font-bold dark:text-gray-400 ">Scraped Data</h1>#}
-
-            <div class="border border-green-100 p-0.5 rounded-lg overflow-auto" id="table-container"
+            <div class="border border-green-100 p-0.5 rounded-lg overflow-auto"
                  style="width: 100%; max-height: 58vh;">
                 <div class="relative shadow-md sm:rounded-lg">
-                    <table class="relative w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                    <table class="relative w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400" id="table-container">
                         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400 sticky top-0">
                         <tr>
                             <th scope="col" class="px-6 py-3 text-center">
@@ -74,125 +74,71 @@
                             <th scope="col" class="px-6 py-3 text-center">
                                 Price
                             </th>
-                            <th scope="col" class="px-6 py-3 text-center sticky top-0">
+                            <th scope="col" class="px-6 py-3 text-center">
                                 Images
                             </th>
                         </tr>
                         </thead>
-                        <tbody id="product_tbody" class="table-fixed">
-{#                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 ">#}
-{#                            <th scope="row"#}
-{#                                class="px-6 py-4 font-medium text-gray-900 dark:text-white truncate max-w-72">#}
-{#                                Rolex Day-Date II 218206 Rolex Day-Date II 218206Rolex Day-Date II 218206Rolex Day-Date#}
-{#                                II 218206 Date II 218206#}
-{#                            </th>#}
-{#                            <td class="px-6 py-4 w-72 max-h-72 text-overflow">#}
-{#                                Brand: RolexReference: 218206Model: Day-Date IIMovement: AutomaticCase:#}
-{#                                PlatinumBracelet: PlatinumSize: 41mmDial Color: Ice BlueCrystal: SapphireBezel:#}
-{#                                PlatinumYear: Open-Date (Rolex Card w/o Date)Condition: Pre OwnedBox: YesPapers: Brand:#}
-{#                                RolexReference: 218206Model: Day-Date IIMovement: AutomaticCase:#}
-{#Brand: RolexReference: 218206Model: Day-Date IIMovement: AutomaticCase:#}
-{#                                PlatinumBracelet: PlatinumSize: 41mmDial Color: Ice BlueCrystal: SapphireBezel:#}
-{#                                PlatinumYear: Open-Date (Rolex Card w/o Date)Condition: Pre OwnedBox: YesPapers: Brand:#}
-{#                                RolexReference: 218206Model: Day-Date IIMovement: AutomaticCase:#}
-{#                                 Brand: RolexReference: 218206Model: Day-Date IIMovement: AutomaticCase:#}
-{#                                PlatinumBracelet: PlatinumSize: 41mmDial Color: Ice BlueCrystal: SapphireBezel:#}
-{#                                PlatinumYear: Open-Date (Rolex Card w/o Date)Condition: Pre OwnedBox: YesPapers: Brand:#}
-{#                                RolexReference: 218206Model: Day-Date IIMovement: AutomaticCase:#}
-{#Brand: RolexReference: 218206Model: Day-Date IIMovement: AutomaticCase:#}
-{#                                PlatinumBracelet: PlatinumSize: 41mmDial Color: Ice BlueCrystal: SapphireBezel:#}
-{#                                PlatinumYear: Open-Date (Rolex Card w/o Date)Condition: Pre OwnedBox: YesPapers: Brand:#}
-{#                                RolexReference: 218206Model: Day-Date IIMovement: AutomaticCase:#}
-{#                            </td>#}
-{#                            <td class="px-6 py-4 w-72 max-h-72">#}
-{#                                <ul>#}
-{#                                    <li>Year : 1928</li>#}
-{#                                    <li>Year : 1928</li>#}
-{#                                    <li>Year : 1928</li>#}
-{#                                    <li>Year : 1928</li>#}
-{#                                    <li>Year : 1928</li>#}
-{#                                    <li>Year : 1928</li>#}
-{#                                    <li>Year : 1928</li>#}
-{#                                    <li>Year : 1928</li>#}
-{#                                    <li>Year : 1928</li>#}
-{#                                    <li>Year : 1928</li>#}
-{#                                    <li>Year : 1928</li>#}
-{#                                    <li>Year : 1928</li>#}
-{#                                    <li>Year : 1928</li>#}
-{#                                    <li>Year : 1928</li>#}
-{#                                    <li>Year : 1928</li>#}
-{#                                </ul>#}
-{#                            </td>#}
-{#                            <td class="px-6 py-4">#}
-{#                                13500.00#}
-{#                            </td>#}
-{#                            <td class="px-6 py-4">#}
-{#                                <a href="https://cdn.shopify.com/s/files/1/0561/0838/4345/files/DSC00045.jpg?v=1722279774"#}
-{#                                   target="_blank"#}
-{#                                   class="font-medium text-blue-600 dark:text-blue-500 hover:underline">https://cdn.shopify.com/s/files/1/0561/0838/4345/files/DSC00045.jpg?v=1722279774</a>#}
-{#                                <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">https://cdn.shopify.com/s/files/1/0561/0838/4345/files/DSC00045.jpg?v=1722279774</a>#}
-{#                                <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">https://cdn.shopify.com/s/files/1/0561/0838/4345/files/DSC00045.jpg?v=1722279774</a>#}
-{#                                <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">https://cdn.shopify.com/s/files/1/0561/0838/4345/files/DSC00045.jpg?v=1722279774</a>#}
-{#                                <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">https://cdn.shopify.com/s/files/1/0561/0838/4345/files/DSC00045.jpg?v=1722279774</a>#}
-{#                                <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">https://cdn.shopify.com/s/files/1/0561/0838/4345/files/DSC00045.jpg?v=1722279774</a>#}
-{##}
-{#                            </td>#}
-{#                        </tr>#}
-{##}
-{#                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">#}
-{#                            <th scope="row"#}
-{#                                class="px-6 py-4 font-medium text-gray-900 dark:text-white truncate max-w-72">#}
-{#                                Rolex Day-Date II 218206 Rolex Day-Date II 218206Rolex Day-Date II 218206Rolex Day-Date#}
-{#                                II 218206 Date II 218206#}
-{#                            </th>#}
-{#                            <td class="px-6 py-4 max-w-72 max-h-72 overflow-hidden text-ellipsis line-clamp-[300] block">#}
-{#                                Brand: RolexReference: 218206Model: Day-Date IIMovement: AutomaticCase:#}
-{#                                PlatinumBracelet: PlatinumSize: 41mmDial Color: Ice BlueCrystal: SapphireBezel:#}
-{#                                PlatinumYear: Open-Date (Rolex Card w/o Date)Condition: Pre OwnedBox: YesPapers: Brand:#}
-{#                                RolexReference: 218206Model: Day-Date IIMovement: AutomaticCase:#}
-{#                                PlatinumBracelet: PlatinumSize: 41mmDial Color: Ice BlueCrystal: SapphireBezel:#}
-{#                                PlatinumYear: Open-Date (Rolex Card w/o Date)Condition: Pre OwnedBox: YesPapers:#}
-{#                                Brand: RolexReference: 218206Model: Day-Date IIMovement: AutomaticCase:#}
-{#                                PlatinumBracelet: PlatinumSize: 41mmDial Color: Ice BlueCrystal: SapphireBezel:#}
-{#                                PlatinumYear: Open-Date (Rolex Card w/o Date)Condition: Pre OwnedBox: YesPapers: Brand:#}
-{#                                RolexReference: 218206Model: Day-Date IIMovement: AutomaticCase:#}
-{#                                PlatinumBracelet: PlatinumSize: 41mmDial Color: Ice BlueCrystal: SapphireBezel:#}
-{#                                PlatinumYear: Open-Date (Rolex Card w/o Date)Condition: Pre OwnedBox: YesPapers:#}
-{#                                Brand: RolexReference: 218206Model: Day-Date IIMovement: AutomaticCase:#}
-{#                                PlatinumBracelet: PlatinumSize: 41mmDial Color: Ice BlueCrystal: SapphireBezel:#}
-{#                                PlatinumYear: Open-Date (Rolex Card w/o Date)Condition: Pre OwnedBox: YesPapers: Brand:#}
-{#                                RolexReference: 218206Model: Day-Date IIMovement: AutomaticCase:#}
-{#                                PlatinumBracelet: PlatinumSize: 41mmDial Color: Ice BlueCrystal: SapphireBezel:#}
-{#                                PlatinumYear: Open-Date (Rolex Card w/o Date)Condition: Pre OwnedBox: YesPapers:#}
-{#                            </td>#}
-{#                            <td class="px-6 py-4 max-w-72 w-1/6 max-h-40 overflow-hidden text-ellipsis">#}
-{#                                <ul>#}
-{#                                    <li>Year : 1928</li>#}
-{#                                    <li>Reference # : N/A</li>#}
-{#                                    <li>Model : Ladies</li>#}
-{#                                    <li>Watch Type : Vintage Ladies</li>#}
-{#                                    <li>Case : Excellent Condition, Original Case & Case Back, Original Crown,#}
-{#                                        Original Bezel // Serial # 0140XXX#}
-{#                                    </li>#}
-{#                                    <li>Case Dimensions : 17mm wide x 31mm lug to lug. (8mm thick)</li>#}
-{#                                    <li>Case Metal : Solid 14k White Gold</li>#}
-{#                                </ul>#}
-{#                            </td>#}
-{#                            <td class="px-6 py-4">#}
-{#                                13500.00#}
-{#                            </td>#}
-{#                            <td class="px-6 py-4">#}
-{#                                <a href="https://cdn.shopify.com/s/files/1/0561/0838/4345/files/DSC00045.jpg?v=1722279774"#}
-{#                                   target="_blank"#}
-{#                                   class="font-medium text-blue-600 dark:text-blue-500 hover:underline">https://cdn.shopify.com/s/files/1/0561/0838/4345/files/DSC00045.jpg?v=1722279774</a>#}
-{#                                <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">https://cdn.shopify.com/s/files/1/0561/0838/4345/files/DSC00045.jpg?v=1722279774</a>#}
-{#                                <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">https://cdn.shopify.com/s/files/1/0561/0838/4345/files/DSC00045.jpg?v=1722279774</a>#}
-{#                                <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">https://cdn.shopify.com/s/files/1/0561/0838/4345/files/DSC00045.jpg?v=1722279774</a>#}
-{#                                <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">https://cdn.shopify.com/s/files/1/0561/0838/4345/files/DSC00045.jpg?v=1722279774</a>#}
-{#                                <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">https://cdn.shopify.com/s/files/1/0561/0838/4345/files/DSC00045.jpg?v=1722279774</a>#}
-{##}
-{#                            </td>#}
-{#                        </tr>#}
+                        <tbody id="product_tbody">
+                        {#                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 ">#}
+                        {#                            <th scope="row"#}
+                        {#                                class="px-6 py-4 font-medium text-gray-900 dark:text-white truncate max-w-72">#}
+                        {#                                Rolex Day-Date II 218206 Rolex Day-Date II 218206Rolex Day-Date II 218206Rolex Day-Date#}
+                        {#                                II 218206 Date II 218206#}
+                        {#                            </th>#}
+                        {#                            <td class="px-6 py-4">#}
+                        {#                                Brand: RolexReference: 218206Model: Day-Date IIMovement: AutomaticCase:#}
+                        {#                                PlatinumBracelet: PlatinumSize: 41mmDial Color: Ice BlueCrystal: SapphireBezel:#}
+                        {#                                PlatinumYear: Open-Date (Rolex Card w/o Date)Condition: Pre OwnedBox: YesPapers: Brand:#}
+                        {#                                RolexReference: 218206Model: Day-Date IIMovement: AutomaticCase:#}
+                        {#                                Brand: RolexReference: 218206Model: Day-Date IIMovement: AutomaticCase:#}
+                        {#                                PlatinumBracelet: PlatinumSize: 41mmDial Color: Ice BlueCrystal: SapphireBezel:#}
+                        {#                                PlatinumYear: Open-Date (Rolex Card w/o Date)Condition: Pre OwnedBox: YesPapers: Brand:#}
+                        {#                                RolexReference: 218206Model: Day-Date IIMovement: AutomaticCase:#}
+                        {#                                Brand: RolexReference: 218206Model: Day-Date IIMovement: AutomaticCase:#}
+                        {#                                PlatinumBracelet: PlatinumSize: 41mmDial Color: Ice BlueCrystal: SapphireBezel:#}
+                        {#                                PlatinumYear: Open-Date (Rolex Card w/o Date)Condition: Pre OwnedBox: YesPapers: Brand:#}
+                        {#                                RolexReference: 218206Model: Day-Date IIMovement: AutomaticCase:#}
+                        {#                                Brand: RolexReference: 218206Model: Day-Date IIMovement: AutomaticCase:#}
+                        {#                                PlatinumBracelet: PlatinumSize: 41mmDial Color: Ice BlueCrystal: SapphireBezel:#}
+                        {#                                PlatinumYear: Open-Date (Rolex Card w/o Date)Condition: Pre OwnedBox: YesPapers: Brand:#}
+                        {#                                RolexReference: 218206Model: Day-Date IIMovement: AutomaticCase:#}
+                        {#                            </td>#}
+                        {#                            <td class="px-6 py-4">#}
+                        {#                                <ul>#}
+                        {#                                    <li>Year : 1928</li>#}
+                        {#                                    <li>Year : 1928</li>#}
+                        {#                                    <li>Year : 1928</li>#}
+                        {#                                    <li>Year : 1928</li>#}
+                        {#                                    <li>Year : 1928</li>#}
+                        {#                                    <li>Year : 1928</li>#}
+                        {#                                    <li>Year : 1928</li>#}
+                        {#                                    <li>Year : 1928</li>#}
+                        {#                                    <li>Year : 1928</li>#}
+                        {#                                    <li>Year : 1928</li>#}
+                        {#                                    <li>Year : 1928</li>#}
+                        {#                                    <li>Year : 1928</li>#}
+                        {#                                    <li>Year : 1928</li>#}
+                        {#                                    <li>Year : 1928</li>#}
+                        {#                                    <li>Year : 1928</li>#}
+                        {#                                </ul>#}
+                        {#                            </td>#}
+                        {#                            <td class="px-6 py-4">#}
+                        {#                                13500.00#}
+                        {#                            </td>#}
+                        {#                            <td class="px-6 py-4">#}
+                        {#                                <a href="https://cdn.shopify.com/s/files/1/0561/0838/4345/files/DSC00045.jpg?v=1722279774"#}
+                        {#                                   target="_blank"#}
+                        {#                                   class="font-medium text-blue-600 dark:text-blue-500 hover:underline">https://cdn.shopify.com/s/files/1/0561/0838/4345/files/DSC00045.jpg?v=1722279774</a>#}
+                        {#                                <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">https://cdn.shopify.com/s/files/1/0561/0838/4345/files/DSC00045.jpg?v=1722279774</a>#}
+                        {#                                <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">https://cdn.shopify.com/s/files/1/0561/0838/4345/files/DSC00045.jpg?v=1722279774</a>#}
+                        {#                                <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">https://cdn.shopify.com/s/files/1/0561/0838/4345/files/DSC00045.jpg?v=1722279774</a>#}
+                        {#                                <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">https://cdn.shopify.com/s/files/1/0561/0838/4345/files/DSC00045.jpg?v=1722279774</a>#}
+                        {#                                <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">https://cdn.shopify.com/s/files/1/0561/0838/4345/files/DSC00045.jpg?v=1722279774</a>#}
+                        {##}
+                        {#                            </td>#}
+                        {#                        </tr>#}
+
                         </tbody>
                     </table>
                 </div>
@@ -205,11 +151,8 @@
     <script>
         const scapeBtn = document.getElementById("scrape-btn");
         const processingBtn = document.getElementById("processing-btn");
-        {#const jsonResult = document.getElementById("json");#}
         const linkedinUrl = document.getElementById("shopify-url");
         const tBody = document.getElementById("product_tbody");
-
-        {#console.log("jsonResult", jsonResult);#}
 
         {# scrape btn click #}
         document.getElementById("scrape-btn").addEventListener("click", function () {
@@ -234,7 +177,7 @@
                         return response.text()
                     })
                     .then((html) => {
-                        console.log("data", html);
+                        {#console.log("data", html);#}
                         scapeBtn.style.display = "inline-block";
                         processingBtn.style.display = "none";
                         tBody.innerHTML = html;
@@ -249,14 +192,27 @@
             }
         });
 
-        {#down btn click#}
-        {#const dlAnchorElem = document.getElementById('file-down-btn').addEventListener("click", function () {#}
-        {#const download_data = JSON.parse(jsonResult.textContent);#}
-        {#console.log("download_data", download_data);#}
-        {#const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(download_data, null, 2));#}
-        {#this.setAttribute("href", dataStr);#}
-        {#this.setAttribute("download", "output.json");#}
-        {# });#}
+        {#down btn click - 여기 구현은 나중에 바꿔야 할듯 다시 api를 호출하거나 index에서 결과를 refurn 받는것이 좋을듯 ., #}
+        const dlAnchorElem = document.getElementById('file-down-btn').addEventListener("click", function () {
+            const table = document.getElementById('table-container');
+            const rows = table.querySelectorAll('tr');
+            const data = [];
+            rows.forEach(row => {
+                const rowData = [];
+                row.querySelectorAll('th, td').forEach(cell => {
+                    rowData.push(cell.innerText);
+                });
+                data.push(rowData);
+            });
+            const jsonData = JSON.stringify(data);
+            const blob = new Blob([jsonData], {type: 'application/json'});
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url
+            a.download = 'shopify.json';
+            document.body.appendChild(a);
+            a.click();
+         });
 
     </script>
 
