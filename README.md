@@ -51,3 +51,5 @@ $ npx tailwindcss -i ./static/src/input.css -o ./static/src/output.css --watch
 
 For any feedback or queries, please reach out to me at [kimyk0120@gmail.com](kimyk0120@gmail.com).
 
+
+[![Buy Me A Coffee](https://img.buymeacoffee.com/button-api/?slug=zubdata&button_colour=FFDD00&font_colour=000000&font_family=Lato&outline_colour=000000&coffee_colour=ffffff)](https://www.buymeacoffee.com/kimyk0120)
